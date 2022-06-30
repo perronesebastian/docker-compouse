@@ -1,0 +1,26 @@
+docker-compose up -d -> levanto
+docker-compose ps -a -> ps: listo todos los procesos de docker | -a -> fuerzo que aparezcan todos los activos e inactivos
+
+docker exec -it kafka_kafka_1 /bin/sh -> kafka_kafka_1 es el nombre del contenedor que aparece en docker
+
+cd /opt/bitnami/kafka -> me muevo a este directorio para tirar comandos (la direccion puede variar pero se puede visualizar buscandola en el contenedor creado en docker)
+
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic devs4j-topic --partitions 5 --replication-factor 1 ------> creando un topic particionado en 5 partes para que los mensajes se distribuyan en ellas, replicado en 1 porque solo tengo un nodo o computadora o servidor (--bootstrap-server localhost:9092) 
+bin/kafka-topics.sh --list --bootstrap-server localhost:9092 ------> muestra la lista de los topics
+bin/kafka-topics.sh --describe --topic devs4j-topic --bootstrap-server localhost:9092 -----> muestra la descripcion de mi topic
+
+bin/kafka-console-producer.sh --topic devs4j-topic --bootstrap-server localhost:9092 ------> creando un producer para poder enviar mensajes a kafka
+bin/kafka-console-consumer.sh --topic devs4j-topic --from-beginning --bootstrap-server localhost:9092 ------> creando un consumer para ver los mensajes (en otra consola)
+
+docker exec -it kafka_kafka_1 /bin/sh/opt/bitnami/kafka
+
+
+
+
+
+
+
+
+
+
+
